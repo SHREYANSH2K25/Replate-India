@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { 
   PlusCircleIcon, 
   ChartBarIcon, 
@@ -152,18 +153,30 @@ export default function Dashboard() {
             <div className="bg-white rounded-xl shadow-md border border-teal-100 p-6">
               <h2 className="text-2xl font-bold text-teal-800 mb-6">Quick Actions</h2>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <button className="p-6 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg hover:from-teal-600 hover:to-teal-700 transition-colors duration-200 flex flex-col items-center gap-3">
+                <Link 
+                  to="/post"
+                  className="p-6 bg-gradient-to-r from-teal-500 to-teal-600 text-white rounded-lg hover:from-teal-600 hover:to-teal-700 transition-colors duration-200 flex flex-col items-center gap-3"
+                  data-testid="dashboard-post-food"
+                >
                   <PlusCircleIcon className="h-10 w-10" />
                   <span className="font-semibold">Post New Food</span>
-                </button>
-                <button className="p-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-colors duration-200 flex flex-col items-center gap-3">
+                </Link>
+                <button 
+                  onClick={() => setActiveTab('analytics')}
+                  className="p-6 bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg hover:from-blue-600 hover:to-blue-700 transition-colors duration-200 flex flex-col items-center gap-3"
+                  data-testid="dashboard-view-analytics"
+                >
                   <ChartBarIcon className="h-10 w-10" />
                   <span className="font-semibold">View Analytics</span>
                 </button>
-                <button className="p-6 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-colors duration-200 flex flex-col items-center gap-3">
+                <Link 
+                  to="/browse"
+                  className="p-6 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white rounded-lg hover:from-emerald-600 hover:to-emerald-700 transition-colors duration-200 flex flex-col items-center gap-3"
+                  data-testid="dashboard-browse-food"
+                >
                   <GiftIcon className="h-10 w-10" />
                   <span className="font-semibold">Browse Food</span>
-                </button>
+                </Link>
               </div>
             </div>
 
@@ -200,10 +213,14 @@ export default function Dashboard() {
           <div className="space-y-6">
             <div className="flex justify-between items-center">
               <h2 className="text-2xl font-bold text-teal-800">My Food Posts ({foodList.length})</h2>
-              <button className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors duration-200 flex items-center gap-2">
+              <Link 
+                to="/post"
+                className="bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700 transition-colors duration-200 flex items-center gap-2"
+                data-testid="add-new-post-button"
+              >
                 <PlusCircleIcon className="h-5 w-5" />
                 Add New Post
-              </button>
+              </Link>
             </div>
             
             {foodList.length > 0 ? (
@@ -217,10 +234,14 @@ export default function Dashboard() {
                 <PlusCircleIcon className="h-16 w-16 text-gray-400 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-700 mb-2">No Food Posts Yet</h3>
                 <p className="text-gray-500 mb-6">Start making a difference by posting your surplus food!</p>
-                <button className="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition-colors duration-200 flex items-center gap-2 mx-auto">
+                <Link 
+                  to="/post"
+                  className="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition-colors duration-200 flex items-center gap-2 mx-auto"
+                  data-testid="post-first-food-item"
+                >
                   <PlusCircleIcon className="h-5 w-5" />
                   Post Your First Food Item
-                </button>
+                </Link>
               </div>
             )}
           </div>
