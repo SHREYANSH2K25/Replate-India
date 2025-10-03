@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import FoodCard from './FoodCard'; 
 import { 
   MagnifyingGlassIcon, 
@@ -58,9 +59,13 @@ export default function Browse() {
           <p className="text-gray-500 mb-6 max-w-md mx-auto">
             Be the first to share surplus food in your community! Help reduce waste and feed those in need.
           </p>
-          <button className="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors duration-200">
+          <Link 
+            to="/post"
+            className="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors duration-200 inline-block"
+            data-testid="browse-post-first-item"
+          >
             Post Your First Item
-          </button>
+          </Link>
         </>
       ) : (
         <>
@@ -192,4 +197,4 @@ export default function Browse() {
       </div>
     </div>
   );
-};
+}
